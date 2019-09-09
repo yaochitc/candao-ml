@@ -25,5 +25,21 @@ public class CandaoUtil {
 		return new HdfsFileDataHose(avazuCols, path, path, seperator, true);
 	}
 
+	public static DataHose getCandaoByDish(String dish) {
+		String seperator = ",";
+		String path = String.format("data/dishes/%s.csv", dish);
+		Column[] avazuCols = new Column[]{
+				new Column.StringColumn("date"),
+				new Column.StringColumn("dayWeather"),
+				new Column.StringColumn("nightWeather"),
+				new Column.StringColumn("dayTemp"),
+				new Column.StringColumn("nightTemp"),
+				new Column.StringColumn("wind"),
+				new Column.StringColumn("isWorkday"),
+				new Column.StringColumn("isHoliday"),
+				new Column.DoubleColumn("amount")
+		};
+		return new HdfsFileDataHose(avazuCols, path, path, seperator, false);
+	}
 
 }
